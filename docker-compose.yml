@@ -1,0 +1,77 @@
+version: '3'
+services:
+
+  #PHP Service
+  app:
+    build: ./php
+    image: felipemeddeiros/php
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ../:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../:/var/www
+      - ./nginx/sites/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db
+    networks:
+      - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: incentivador
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql/dbdata:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+  angular: 
+    build: ./npm
+    container_name: angular
+    image: felipemeddeiros/angular  
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ../webv2:/var/www/webv2 
+    ports: 
+      - '4200:4200'
+    command: bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
+    depends_on:
+      - app
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
