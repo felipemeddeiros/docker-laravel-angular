@@ -8,3 +8,5 @@ RUN apt-get update \
   && npm cache clear --force \
   && yarn cache clean \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
+
+USER node

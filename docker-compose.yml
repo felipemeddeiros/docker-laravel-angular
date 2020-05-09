@@ -2,7 +2,7 @@ version: '3'
 services:
 
   #PHP Service
-  app:
+  php-fpm:
     build: ./php
     image: felipemeddeiros/php
     container_name: app
@@ -19,7 +19,7 @@ services:
       - app-network
 
   #Nginx Service
-  webserver:
+  nginx:
     image: nginx:alpine
     container_name: webserver
     restart: unless-stopped
@@ -32,13 +32,13 @@ services:
       - ./nginx/sites/:/etc/nginx/conf.d/
       - ./nginx/log/:/var/log/nginx/
     depends_on:
-      - app
-      - db
+      - php-fpm
+      - mysql
     networks:
       - app-network
 
   #MySQL Service
-  db:
+  mysql:
     image: mysql:5.7
     container_name: db
     restart: unless-stopped
@@ -56,19 +56,19 @@ services:
     networks:
       - app-network
 
-  angular: 
+  npm: 
     build: ./npm
-    container_name: angular
+    container_name: npm-angular
     image: felipemeddeiros/angular  
     restart: unless-stopped
     tty: true
     volumes:
-      - ../webv2:/var/www/webv2 
+      - ../:/var/www 
     ports: 
       - '4200:4200'
     command: bash -c "npm install && ng serve --host 0.0.0.0 --port 4200"
     depends_on:
-      - app
+      - php-fpm
     networks:
       - app-network
 
