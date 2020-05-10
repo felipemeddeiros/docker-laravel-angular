@@ -4,7 +4,7 @@ services:
   #PHP Service
   php-fpm:
     build: ./php
-    image: felipemeddeiros/php
+    image: felipemeddeiros/php-fpm
     container_name: app
     restart: unless-stopped
     tty: true
@@ -59,7 +59,7 @@ services:
   npm: 
     build: ./npm
     container_name: npm-angular
-    image: felipemeddeiros/angular  
+    image: felipemeddeiros/npm-angular  
     restart: unless-stopped
     tty: true
     volumes:
