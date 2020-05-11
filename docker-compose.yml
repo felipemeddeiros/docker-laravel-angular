@@ -15,7 +15,6 @@ services:
     volumes:
       - ../:/var/www
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-
     depends_on:
       - mysql
     networks:
@@ -42,7 +41,7 @@ services:
 
   #MySQL Service
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0.20
     container_name: mysql
     restart: unless-stopped
     tty: true
