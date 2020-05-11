@@ -5,7 +5,7 @@ services:
   php-fpm:
     build: ./php
     image: felipemeddeiros/php-fpm
-    container_name: app
+    container_name: php-fpm
     restart: unless-stopped
     tty: true
     environment:
@@ -15,13 +15,15 @@ services:
     volumes:
       - ../:/var/www
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - mysql
     networks:
       - app-network
 
   #Nginx Service
   nginx:
     image: nginx:alpine
-    container_name: webserver
+    container_name: nginx
     restart: unless-stopped
     tty: true
     ports:
@@ -39,8 +41,8 @@ services:
 
   #MySQL Service
   mysql:
-    image: mysql:5.7
-    container_name: db
+    image: mysql:8
+    container_name: mysql
     restart: unless-stopped
     tty: true
     ports:
