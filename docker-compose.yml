@@ -7,7 +7,6 @@ services:
     image: felipemeddeiros/php-fpm
     container_name: php-fpm
     restart: unless-stopped
-    tty: true
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
@@ -25,7 +24,6 @@ services:
     image: nginx:alpine
     container_name: nginx
     restart: unless-stopped
-    tty: true
     ports:
       - "80:80"
       - "443:443"
@@ -44,7 +42,6 @@ services:
     image: mysql:8.0.20
     container_name: mysql
     restart: unless-stopped
-    tty: true
     ports:
       - "3306:3306"
     environment:
@@ -58,12 +55,11 @@ services:
     networks:
       - app-network
 
-  npm: 
+  npm-angular: 
     build: ./npm
     container_name: npm-angular
     image: felipemeddeiros/npm-angular  
     restart: unless-stopped
-    tty: true
     volumes:
       - ../:/var/www 
     ports: 
