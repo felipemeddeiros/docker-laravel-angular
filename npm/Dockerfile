@@ -10,3 +10,5 @@ RUN apt-get update \
   && sed -i -e "s/bin\/ash/bin\/sh/" /etc/passwd
 
 USER node
+
+EXPOSE 4200
