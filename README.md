@@ -40,7 +40,7 @@ No diretório do backoffice execute o comando para gerar o arquivo .env de confi
 ```bash
 $ cp .env.example .env
 ```
-> Abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
+Abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
 ```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
@@ -78,7 +78,7 @@ No diretório da API, execute o comando para gerar o arquivo .env de configuraç
 ```bash
 $ cp .env.example .env
 ```
-> Novamente, abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
+Novamente, abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
 ```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
