@@ -41,12 +41,14 @@ No diretório do backoffice execute o comando para gerar o arquivo .env de confi
 $ cp .env.example .env
 ```
 > Abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
+```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=incentivador
 DB_USERNAME=root
 DB_PASSWORD=root
+```
 
 Cacheando as configurações
 ```bash
@@ -77,12 +79,14 @@ No diretório da API, execute o comando para gerar o arquivo .env de configuraç
 $ cp .env.example .env
 ```
 > Novamente, abra o arquivo e confirme as configurações abaixo. Caso algo esteja diferente altere para o que está abaixo.
->>DB_CONNECTION=mysql
->>DB_HOST=mysql
->>DB_PORT=3306
->>DB_DATABASE=incentivador
->>DB_USERNAME=root
->>DB_PASSWORD=root
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=incentivador
+DB_USERNAME=root
+DB_PASSWORD=root
+```
 
 Cacheando as configurações
 ```bash
