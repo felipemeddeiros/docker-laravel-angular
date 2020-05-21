@@ -52,17 +52,17 @@ DB_PASSWORD=root
 
 Cacheando as configurações
 ```bash
-$ docker container exec php-fpm php ./backoffice/artisan config:cache
+$ docker container exec -it php-fpm php ./backoffice/artisan config:cache
 ```
 
 Executando as migrations e seeders
 ```bash
-$ docker container exec php-fpm php ./backoffice/artisan migrate --seed
+$ docker container exec -it php-fpm php ./backoffice/artisan migrate --seed
 ```
 
 Liberando o acesso público as imagens incluídas no sistema.
 ```bash
-$ docker container exec php-fpm php ./backoffice/artisan storage:link
+$ docker container exec -it php-fpm php ./backoffice/artisan storage:link
 ```
 
 Pronto o backoffice deve estar disponível no seguinte endereço: http://backoffice.local
@@ -71,7 +71,7 @@ Pronto o backoffice deve estar disponível no seguinte endereço: http://backoff
 
 Instalando os packages da API
 ```bash
-$ docker container exec php-fpm composer install -d /var/www/api 
+$ docker container exec -it php-fpm composer install -d /var/www/api 
 ```
 
 No diretório da API, execute o comando para gerar o arquivo .env de configuração 
@@ -90,17 +90,17 @@ DB_PASSWORD=root
 
 Cacheando as configurações
 ```bash
-$ docker container exec php-fpm php ./api/artisan config:cache
+$ docker container exec -it php-fpm php ./api/artisan config:cache
 ```
 
 Executando as migrations da API
 ```bash
-$ docker container exec php-fpm php ./api/artisan migrate
+$ docker container exec -it php-fpm php ./api/artisan migrate
 ```
 
 Instalando o Laravel passport
 ```bash
-$ docker container exec php-fpm php ./api/artisan passport:install
+$ docker container exec -it php-fpm php ./api/artisan passport:install
 ```
 
 Pronto a api deve estar disponível no seguinte endereço: http://api.local
