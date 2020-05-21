@@ -5,9 +5,13 @@ Para permitir a instalação em qualquer sistema operacional foi utilizado o [Do
 Apoś instalar o docker, crie sua pasta do projeto Incentivador e clone esse repositório dentro.
 
 Clone os repositórios dos outros projetos ao lado.
+
 - [Backoffice](https://bitbucket.org/Incentivadorvendas/backoffice/src/master/)
+
 - [API](https://bitbucket.org/Incentivadorvendas/api/src/master/)
+
 - [Webv2](https://bitbucket.org/Incentivadorvendas/webv2/src/master/)
+
 
 Abra o terminal de comandos e vá ao diretório do docker. Dentro execute o seguinte comando para subir os containers.
 ```bash
@@ -16,6 +20,7 @@ $ docker-compose up -d
 
 Isso deve levar alguns minutos. Enquanto isso vá as configurações de hosts do seu sistema operacional e inclua alguns dominios.
 > **Windows**: C:/Windows/System32/Drivers/etc/hosts
+
 > **Linux**: /etc/hosts
 ```text
 127.0.0.1	backoffice.local
