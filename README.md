@@ -112,7 +112,7 @@ ela deve estar disponível no seguinte endereço: http://webv2.local
 
 ## Instruções de uso
 
-Caso precise executar algum comando *php artisan* ou *composer* você só precisa entrar no container **php-fpm** escolher o projeto(backoffice ou API), entrar na pasta e executar o comando desejado. Abaixo o comando para entrar no container
+Caso precise executar algum comando *php artisan* ou *composer* você só precisa entrar no container **php-fpm** escolher o projeto(backoffice ou API), entrar na pasta e executar o comando desejado. Abaixo o comando para entrar no container.
 ```bash
 $ docker container exec -it php-fpm bash
 ```
